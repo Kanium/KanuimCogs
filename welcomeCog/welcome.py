@@ -5,6 +5,7 @@ import json
 from redbot.core import Config, checks, commands
 from redbot.core.utils.chat_formatting import box, humanize_list, pagify
 
+jsonFilePath = './data/embedded_message.json'
 
 def fetchMessage(jsonFormat):
     try:
@@ -27,7 +28,7 @@ def fetchMessage(jsonFormat):
 class WelcomeCog(commands.Cog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.message = 'test'
+        self.message = json.load(open(jsonFilePath,'r'))
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
