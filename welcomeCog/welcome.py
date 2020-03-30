@@ -43,12 +43,9 @@ class WelcomeCog(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         try:
-            await member.send('sending')
             if self.message == '':
-                await member.send('modifying')
                 self.message = await fetchMessage()
             message = formatMessage(self.message)
-            await member.send(str(self.message))
             await member.send(content=None, embed=message)
         except (discord.NotFound, discord.Forbidden):
             print(f'Error Occured! sending a dm to {member.display_name} didnt work !')
