@@ -21,8 +21,10 @@ def fetchMessage(jsonFormat):
     except:
         return 'Welcome To Kanuim !'
 
-class WelcomeCog(commands.Cog):
-    def __init__(self, bot):
+class WelcomeCog():
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
         self.message = json.loads(str(embed))
         self.bot = bot
 
