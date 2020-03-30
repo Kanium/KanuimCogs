@@ -29,12 +29,13 @@ def fetchMessage(jsonFormat):
 class WelcomeCog(commands.Cog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.message = json.loads(str(embed))
+        # self.message = json.loads(str(embed))
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         try:
-            message = fetchMessage(self.message)
+            #message = fetchMessage(self.message)
+            message = "helloo"
             await member.send(content=None, embed=message)
         except:
             print(
