@@ -24,12 +24,9 @@ def fetchMessage(jsonFormat):
 class WelcomeCog():
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        
         self.message = json.loads(str(embed))
-        self.bot = bot
 
     @commands.Cog.listener()
-    @commands.guild_only()
     async def on_member_join(self, member: discord.Member):
         try:
             message = fetchMessage(self.message)
