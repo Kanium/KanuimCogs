@@ -37,6 +37,6 @@ class WelcomeCog(commands.Cog):
             #message = fetchMessage(self.message)
             message = "helloo"
             await member.send(message)
-        except:
+        except (discord.NotFound, discord.Forbidden):
             print(
                 f'Error Occured! sending a dm to {member.display_name} didnt work !')
