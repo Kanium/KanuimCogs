@@ -36,7 +36,7 @@ class WelcomeCog(commands.Cog):
         try:
             #message = fetchMessage(self.message)
             message = "helloo"
-            await member.send(content=None, embed=message)
+            await member.send(message)
         except:
             print(
                 f'Error Occured! sending a dm to {member.display_name} didnt work !')
