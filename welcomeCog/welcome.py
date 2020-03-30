@@ -1,7 +1,10 @@
+import asyncio
 import discord
 import json
 import requests
+
 from redbot.core import Config, checks, commands
+from redbot.core.utils.chat_formatting import box, humanize_list, pagify
 
 embed = requests.get("https://raw.githubusercontent.com/Kanium/KanuimCogs/master/welcomeCog/embedded_message.json").text
 
@@ -21,7 +24,7 @@ def fetchMessage(jsonFormat):
     except:
         return 'Welcome To Kanuim !'
 
-class WelcomeCog():
+class WelcomeCog(commands.Cog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.message = json.loads(str(embed))
