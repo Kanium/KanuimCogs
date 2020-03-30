@@ -23,7 +23,7 @@ def fetchMessage(jsonFormat):
 
 class WelcomeCog(commands.Cog):
     def __init__(self, bot):
-        self.message = json.load(embed)
+        self.message = json.loads(str(embed))
         self.bot = bot
 
     @commands.Cog.listener()
