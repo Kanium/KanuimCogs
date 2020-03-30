@@ -6,7 +6,7 @@ import requests
 from redbot.core import Config, checks, commands
 from redbot.core.utils.chat_formatting import box, humanize_list, pagify
 
-embed = requests.get("https://raw.githubusercontent.com/Kanium/KanuimCogs/master/welcomeCog/embedded_message.json").text
+embed = requests.get("https://raw.githubusercontent.com/Kanium/KanuimCogs/master/welcomeCog/data/embedded_message.json").text
 
 def fetchMessage(jsonFormat):
     try:
