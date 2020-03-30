@@ -8,18 +8,12 @@ from redbot.core.utils.chat_formatting import box, humanize_list, pagify
 
 url = 'https://raw.githubusercontent.com/Kanium/KanuimCogs/master/welcomeCog/data/embedded_message.json'
 
-def fetchMessage():
-    async def fetch(session, url):
+async def fetchMessage():
+    async with aiohttp.ClientSession() as session:
         async with session.get(url) as response:
-            return await response.text()
-
-    async def call():
-        async with aiohttp.ClientSession() as session:
-            html = await fetch(session, url)
+            html = await response.text()
             x = json.loads(str(html))
             return x
-
-    return call()
 
 def formatMessage(jsonFormat):
     try:
@@ -42,11 +36,13 @@ def formatMessage(jsonFormat):
 class WelcomeCog(commands.Cog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.message = fetchMessage()
+        self.message = ''
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         try:
+            if self.message == '':
+                self.message = await fetchMessage()
             message = formatMessage(self.message)
             await member.send(content=None, embed=message)
         except (discord.NotFound, discord.Forbidden):
