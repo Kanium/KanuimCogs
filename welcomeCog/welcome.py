@@ -1,12 +1,10 @@
 import asyncio
 import discord
 import json
-import requests
 
 from redbot.core import Config, checks, commands
 from redbot.core.utils.chat_formatting import box, humanize_list, pagify
 
-embed = requests.get("https://raw.githubusercontent.com/Kanium/KanuimCogs/master/welcomeCog/data/embedded_message.json").text
 
 def fetchMessage(jsonFormat):
     try:
@@ -29,15 +27,15 @@ def fetchMessage(jsonFormat):
 class WelcomeCog(commands.Cog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.message = json.loads(str(embed))
+        self.message = 'test'
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         #try:
-            message = fetchMessage(self.message)
-            await member.send(content=None, embed=message)
-            # message = 'helloo'
-            # await member.send(message)
+            # message = fetchMessage(self.message)
+            # await member.send(content=None, embed=message)
+            message = 'helloo'
+            await member.send(message)
         # except (discord.NotFound, discord.Forbidden):
         #     print(
         #         f'Error Occured! sending a dm to {member.display_name} didnt work !')
