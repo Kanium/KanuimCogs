@@ -5,7 +5,7 @@ import json
 from redbot.core import Config, checks, commands
 from redbot.core.utils.chat_formatting import box, humanize_list, pagify
 
-jsonFilePath = './data/embedded_message.json'
+jsonFilePath = 'embedded_message.json'
 
 def fetchMessage(jsonFormat):
     try:
