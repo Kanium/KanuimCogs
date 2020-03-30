@@ -1,7 +1,7 @@
 import discord
-from discord.ext import commands
 import json
 import requests
+from redbot.core import Config, checks, commands
 
 embed = requests.get("https://raw.githubusercontent.com/Kanium/KanuimCogs/master/welcomeCog/embedded_message.json").text
 
