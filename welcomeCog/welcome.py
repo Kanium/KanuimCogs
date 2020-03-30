@@ -31,7 +31,7 @@ def formatMessage(jsonFormat):
         return message
 
     except:
-        message=discord.Embed(title="Kanuim", description='', color=hex(jsonFormat['color']))     
+        message=discord.Embed(title="Kanuim", description='', color=0x3399ff)     
         message.add_field(name="Welcome", value='Welcome To Kanuim !', inline=True) 
         return message
 
