@@ -33,11 +33,11 @@ class WelcomeCog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
-        try:
-            #message = fetchMessage(self.message)
-            #await member.send(content=None, embed=message)
-            message = 'helloo'
-            await member.send(message)
-        except (discord.NotFound, discord.Forbidden):
-            print(
-                f'Error Occured! sending a dm to {member.display_name} didnt work !')
+        #try:
+            message = fetchMessage(self.message)
+            await member.send(content=None, embed=message)
+            # message = 'helloo'
+            # await member.send(message)
+        # except (discord.NotFound, discord.Forbidden):
+        #     print(
+        #         f'Error Occured! sending a dm to {member.display_name} didnt work !')
