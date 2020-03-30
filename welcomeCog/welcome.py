@@ -19,8 +19,7 @@ def fetchMessage():
             x = json.loads(str(html))
             return x
 
-    loop = asyncio.get_event_loop()
-    return loop.run_until_complete(call())
+    return call()
 
 def formatMessage(jsonFormat):
     try:
