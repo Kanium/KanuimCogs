@@ -6,7 +6,7 @@ this is the kanium guild welcome cog. it sends a direct message to a user who ha
 in order to use our cog you would need to install it onto your instance of [RedBot](https://github.com/Cog-Creators/Red-DiscordBot).
 
 
-## requirments:
+## Requirments:
 
 - Instance of [RedBot](https://github.com/Cog-Creators/Red-DiscordBot)
 - Downloader cog has to be loaded. to load:
