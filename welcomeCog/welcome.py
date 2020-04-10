@@ -6,7 +6,7 @@ import json
 from redbot.core import Config, checks, commands
 from redbot.core.utils.chat_formatting import box, humanize_list, pagify
 
-url = 'https://raw.githubusercontent.com/Kanium/KanuimCogs/master/welcomeCog/data/embedded_message.json'
+url = 'https://raw.githubusercontent.com/Kanium/KaniumCogs/master/welcomeCog/data/embedded_message.json'
 
 async def fetchMessage():
     async def fetch():
@@ -31,8 +31,8 @@ def formatMessage(jsonFormat):
         return message
 
     except:
-        message=discord.Embed(title="Kanuim", description='', color=0x3399ff)     
-        message.add_field(name="Welcome", value='Welcome To Kanuim !', inline=True) 
+        message=discord.Embed(title="Kanium", description='', color=0x3399ff)     
+        message.add_field(name="Welcome", value='Welcome To Kanium !', inline=True) 
         return message
 
 class WelcomeCog(commands.Cog):
