@@ -1,9 +1,9 @@
 # WelcomeCog
-this is the kanium guild welcome cog. it sends a direct message to a user who has joined the kanium discord with a [message](./data/embedded_message.json) thats been templated in a json format. Note: This is All the cog does, there are no commands to operate the cog (potentially: yet)
+This is the kanium community/guild welcome cog. it sends a direct message to a user who has joined the kanium discord with a [message](./data/embedded_message.json) thats been templated in a json format. Note: This is All the cog does, there are no commands to operate the cog (potentially: yet)
 
 # How to use:
 
-in order to use our cog you would need to install it onto your instance of [RedBot](https://github.com/Cog-Creators/Red-DiscordBot).
+In order to use our cog you would need to install it onto your instance of [RedBot](https://github.com/Cog-Creators/Red-DiscordBot).
 
 
 ## Requirments:
@@ -23,6 +23,6 @@ in order to use our cog you would need to install it onto your instance of [RedB
 
 ### To modify the sent message:
 
-if you would like to modify the message to your liking, you can either :
+If you would like to modify the message to your liking, you can either :
 - fork the bot. change the [message](./data/embedded_message.json) and [welcome.py](./welcome.py) line 9 to your repo.
 - fork the bot. update the [welcome.py](./welcome.py) line 9 to be directed to your message.json file that you like without having it hosted on github with your repo.
