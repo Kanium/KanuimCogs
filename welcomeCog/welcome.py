@@ -43,6 +43,11 @@ class WelcomeCog(commands.Cog):
         super().__init__(*args, **kwargs)
         self.message = ''
 
+    @commands.command(name='welcomePreview', case_insensitive = False, description='Shows a preview of the welcome message')
+    async def preview(self, ctx):
+        message = formatMessage(self.message)
+        await ctx.send(content=None, embed=message)
+
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         try:
