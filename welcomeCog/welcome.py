@@ -45,6 +45,10 @@ class WelcomeCog(commands.Cog):
 
     @commands.command(name='welcomePreview', case_insensitive = False, description='Shows a preview of the welcome message')
     async def preview(self, ctx):
+        if ctx.guild.id not in allowed_guilds:
+            return
+        if self.message == '':
+            self.message = await fetchMessage()
         message = formatMessage(self.message)
         await ctx.send(content=None, embed=message)
 
