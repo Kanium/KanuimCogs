@@ -1,5 +1,5 @@
 # WelcomeCog
-This is the kanium community/guild welcome cog. it sends a direct message to a user who has joined the kanium discord with a [message](./data/embedded_message.json) thats been templated in a json format. Note: This is All the cog does, there are no commands to operate the cog (potentially: yet)
+This is the Kanium community/guild welcome cog. it sends a DM to any new user that joins the Kanium discord with a [message](./data/embedded_message.json), which has been templated in a json format. Note: This is All the cog does, there are no commands to operate the cog (yet).
 
 # How to use:
 
