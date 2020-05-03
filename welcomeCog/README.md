@@ -1,5 +1,6 @@
 # WelcomeCog
-This is the Kanium community/guild welcome cog. it sends a DM to any new user that joins the Kanium discord with a [message](./data/embedded_message.json), which has been templated in a json format. Note: This is All the cog does, there are no commands to operate the cog (yet).
+This is the Kanium community/guild welcome cog. it sends a DM to any new user that joins the Kanium discord with a [message](./data/embedded_message.json), which has been templated in a json format. 
+Furthermore, this cog allows the ability to monitor discord activity and log it into a specific channel using the specific commands. The tracking of the bot resets the daily statistics every 24 hours after the bot has been launched. 
 
 # How to use:
 
@@ -19,7 +20,17 @@ In order to use our cog you would need to install it onto your instance of [RedB
 3. ```[PREFIX]load welcomeCog```
 
 ### To update the Cog:
+- ```[PREFIX]cog uninstall welcomeCog```
 - ```[PREFIX]repo update [RepoName]```
+- ```[PREFIX]cog install [RepoName] welcomeCog```
+- ```[PREFIX]load welcomeCog```
+
+### Commands
+- ```[PREFIX]welcomepreview``` - sends in the chat a preview of the template message
+- ```[PREFIX]pullmessage``` - allows you to pull the latest version of your message without restarting the bot
+- ```[PREFIX]channel``` - allows you to select a channel in your discord to dump logs to
+- ```[PREFIX]stats``` - prints the statistics that the cog has gathered.
+- ```[PREFIX]resetstats``` - allows for a hard reset of the stats
 
 ### To modify the sent message:
 
