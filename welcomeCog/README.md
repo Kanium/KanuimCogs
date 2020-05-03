@@ -25,10 +25,6 @@ In order to use our cog you would need to install it onto your instance of [RedB
 ### Commands
 - `[PREFIX]welcomepreview` - sends in the chat a preview of the template message
 - `[PREFIX]pullmessage` - allows you to pull the latest version of your message without restarting the bot
-- `[PREFIX]setchannel` - allows you to select a channel in your discord to dump logs to
-- `[PREFIX]stats` - prints the statistics that the cog has gathered.
-- `[PREFIX]resetstats` - allows for a hard reset of the stats
-- `[PREFIX]toggleLogs` - Toggles the logs functionality on or off
 
 ### To modify the sent message:
 If you would like to modify the message to your liking, you can either :
