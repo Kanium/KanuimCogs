@@ -26,9 +26,9 @@ class TrafficTracker(commands.Cog):
             self.dailyLeftCount = 0
             self.date = datetime.now()
 
-    @commands.command(name='setchannel', description='Sets the channel to sends log to')
+    @commands.command(name='settrafficchannel', description='Sets the channel to sends log to')
     @commands.has_any_role(*admin_roles)
-    async def setChannel(self, ctx: commands.Context, channel: discord.TextChannel) -> None:
+    async def setTrafficChannel(self, ctx: commands.Context, channel: discord.TextChannel) -> None:
         await ctx.trigger_typing()
 
         if not channel in ctx.guild.channels:

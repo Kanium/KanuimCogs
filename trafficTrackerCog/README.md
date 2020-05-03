@@ -22,7 +22,7 @@ In order to use our cog you would need to install it onto your instance of [RedB
 - `[PREFIX]load trafficTrackerCog`
 
 ### Commands
-- `[PREFIX]setchannel` - allows you to select a channel in your discord to dump logs to
+- `[PREFIX]settrafficchannel` - allows you to select a channel in your discord to dump logs to
 - `[PREFIX]stats` - prints the statistics that the cog has gathered.
 - `[PREFIX]resetstats` - allows for a hard reset of the stats
 - `[PREFIX]toggleLogs` - Toggles the logs functionality on or off
