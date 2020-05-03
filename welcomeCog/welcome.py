@@ -92,9 +92,9 @@ class WelcomeCog(commands.Cog):
         except():
             print(f'Error Occured!')
 
-    @commands.command(name='channel', description='Sets the channel to sends log to')
+    @commands.command(name='setchannel', description='Sets the channel to sends log to')
     @commands.has_any_role(*admin_roles)
-    async def logChannel(self, ctx: commands.Context, channel: discord.TextChannel) -> None:
+    async def setChannel(self, ctx: commands.Context, channel: discord.TextChannel) -> None:
         await ctx.trigger_typing()
 
         if not channel in ctx.guild.channels:
