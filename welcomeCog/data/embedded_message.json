@@ -11,7 +11,7 @@
         "show earnestness in the submitted application as well as in becoming part of the community."
     ],
     "color":"0x3399ff",
-    "thumbnail": "https://i.imgur.com/4TLdfDA.png",
+    "thumbnail": "https://www.kanium.org/machineroom/logomodern.png",
     "fields":[
         {"id":"text", "name":"Apply for membership", "value":"!apply <applicationText>", "inline":"True"},
         {"id":"text", "name":"Description", "value":"If you are certain about joining, use this command to do so", "inline":"True"},

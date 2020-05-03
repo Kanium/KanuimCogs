@@ -1,20 +1,17 @@
 # WelcomeCog
 This is the Kanium community/guild welcome cog. it sends a DM to any new user that joins the Kanium discord with a [message](./data/embedded_message.json), which has been templated in a json format. 
-Furthermore, this cog allows the ability to monitor discord activity and log it into a specific channel using the specific commands. The tracking of the bot resets the daily statistics every 24 hours after the bot has been launched. 
+Furthermore, this cog allows the ability to monitor discord activity and log it into a specific channel using the specific commands.
 
 # How to use:
-
 In order to use our cog you would need to install it onto your instance of [RedBot](https://github.com/Cog-Creators/Red-DiscordBot).
 
 
 ## Requirments:
-
 - Instance of [RedBot](https://github.com/Cog-Creators/Red-DiscordBot)
 - Downloader cog has to be loaded. to load:
     `[Prefix]load downloader`
 
 ## How to install & load:
-
 1. `[PREFIX]repo add [RepoName] https://github.com/Kanium/KaniumCogs [ActiveBranch  (EX: Master)] `
 2. `[PREFIX]cog install [RepoName] welcomeCog`
 3. `[PREFIX]load welcomeCog`
@@ -32,11 +29,8 @@ In order to use our cog you would need to install it onto your instance of [RedB
 - `[PREFIX]stats` - prints the statistics that the cog has gathered.
 - `[PREFIX]resetstats` - allows for a hard reset of the stats
 - `[PREFIX]toggleLogs` - Toggles the logs functionality on or off
-- `[PREFIX]stopScheduler` - Stops the daily reset scheduler
-- `[PREFIX]startScheduler` - Starts the daily reset scheduler
 
 ### To modify the sent message:
-
 If you would like to modify the message to your liking, you can either :
 - fork the bot. change the [message](./data/embedded_message.json) and [welcome.py](./welcome.py) line 9 to your repo.
 - fork the bot. update the [welcome.py](./welcome.py) line 9 to be directed to your message.json file that you like without having it hosted on github with your repo.
