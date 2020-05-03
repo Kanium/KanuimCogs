@@ -7,7 +7,7 @@ allowed_guilds = {274657393936302080, 693796372092289024, 508781789737648138}
 admin_roles = {'Developer', 'admin', 'Council'}
 statsThumbnailUrl = 'https://www.kanium.org/machineroom/logomachine-small.png'
 
-class TrafficTracker(commands.Cog):
+class TrafficCog(commands.Cog):
 
     def __init__(self, bot):
         self.channel: discord.TextChannel = None
