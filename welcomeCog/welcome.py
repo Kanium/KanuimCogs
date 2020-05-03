@@ -147,11 +147,9 @@ class WelcomeCog(commands.Cog):
         if not self.scheduler:
             await ctx.send('Scheduler is already `OFF`')
             return
-        print('before', len(asyncio.all_tasks()))
         self.scheduler = False
         self.task.cancel()
         self.task = None
-        print('after', len(asyncio.all_tasks()))
         await ctx.send('Scheduler has been turned `OFF`')
 
     @commands.command(name='startscheduler', description='Starts the daily reset scheduler')
@@ -162,10 +160,8 @@ class WelcomeCog(commands.Cog):
         if self.scheduler:
             await ctx.send('Scheduler is already `ON`')
             return
-        print('before', len(asyncio.all_tasks()))
         self.scheduler = True
         self.task = self.bot.loop.create_task(self.countReset())
-        print('after', len(asyncio.all_tasks()))
         await ctx.send('Scheduler has been turned `ON`')
 
     @commands.Cog.listener()
