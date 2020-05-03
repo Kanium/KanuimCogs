@@ -3,3 +3,4 @@
 
 ## Our Cogs:
 - [WelcomeCog](./welcomeCog)
+- [TrafficCog](./trafficCog)
