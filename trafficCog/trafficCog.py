@@ -48,7 +48,7 @@ class TrafficCog(commands.Cog):
     async def statistics(self, ctx: commands.Context) -> None:
         self.__checkClock()
         await ctx.trigger_typing()
-        message = discord.Embed(title='Server Traffic Stats', description='Statistics on server activity\n\n')
+        message = discord.Embed(title='Server Traffic Stats', description='Statistics on server activity\n\n',color=0x3399ff)
         message.set_thumbnail(url=statsThumbnailUrl)
         message.add_field(name='Daily Joined', value=self.dailyJoinedCount, inline='True')
         message.add_field(name='Daily Left', value='{0}\n'.format(self.dailyLeftCount), inline='True')
