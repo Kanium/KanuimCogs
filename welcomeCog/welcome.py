@@ -24,14 +24,8 @@ class WelcomeCog(commands.Cog):
         self.totalLeftCount: int = 0
         self.totalLogs: int = 0
         self.toggleLogs: bool = True
-        self.bot.loop.create_task(WelcomeCog.countReset(self))
-
-    @staticmethod
-    async def countReset(obj):
-        while True:
-            obj.dailyJoinedCount = 0
-            obj.dailyLeftCount = 0
-            await asyncio.sleep(86400)
+        self.scheduler: bool = False
+        self.task = None
 
     @staticmethod
     async def fetchMessage():
@@ -67,6 +61,12 @@ class WelcomeCog(commands.Cog):
             message.add_field(
                 name="Welcome", value='Welcome To Kanium !', inline=True)
             return message
+
+    async def countReset(self):
+        while True:
+            self.dailyJoinedCount = 0
+            self.dailyLeftCount = 0
+            await asyncio.sleep(86400)
 
     @commands.command(name='pullmessage', description='pulls the message from github again')
     @commands.has_any_role(*admin_roles)
@@ -132,6 +132,42 @@ class WelcomeCog(commands.Cog):
 
         await ctx.send('Successfully reset the statistics')
 
+    @commands.command(name='toggleLogs', description='Toggles the logs functionality on or off')
+    @commands.has_any_role(*admin_roles)
+    async def toggleLogs(self, ctx: commands.Context) -> None:
+        await ctx.trigger_typing()
+        self.toggleLogs = not self.toggleLogs
+        await ctx.send('Logging functionality is `ON`' if self.toggleLogs else 'Logging functionality is `OFF`')
+
+    @commands.command(name='stopscheduler', description='Stops the daily reset scheduler')
+    @commands.has_any_role(*admin_roles)
+    async def stopScheduler(self, ctx: commands.Context) -> None:
+        await ctx.trigger_typing()
+
+        if not self.scheduler:
+            await ctx.send('Scheduler is already `OFF`')
+            return
+        print('before', len(asyncio.all_tasks()))
+        self.scheduler = False
+        self.task.cancel()
+        self.task = None
+        print('after', len(asyncio.all_tasks()))
+        await ctx.send('Scheduler has been turned `OFF`')
+
+    @commands.command(name='startscheduler', description='Starts the daily reset scheduler')
+    @commands.has_any_role(*admin_roles)
+    async def startScheduler(self, ctx: commands.Context) -> None:
+        await ctx.trigger_typing()
+
+        if self.scheduler:
+            await ctx.send('Scheduler is already `ON`')
+            return
+        print('before', len(asyncio.all_tasks()))
+        self.scheduler = True
+        self.task = self.bot.loop.create_task(self.countReset())
+        print('after', len(asyncio.all_tasks()))
+        await ctx.send('Scheduler has been turned `ON`')
+
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member) -> None:
         try:
@@ -142,7 +178,7 @@ class WelcomeCog(commands.Cog):
             message = WelcomeCog.formatMessage(self.message)
             await member.send(content=None, embed=message)
             if self.channel in member.guild.channels and self.toggleLogs:
-                await self.channel.send('{0} - has joined the server'.format(member))
+                await self.channel.send('>>> @{0} - has joined the server'.format(member))
             self.totalJoinedCount += 1
             self.dailyJoinedCount += 1
             self.totalLogs += 1
@@ -154,7 +190,7 @@ class WelcomeCog(commands.Cog):
     async def on_member_remove(self, member: discord.Member) -> None:
         try:
             if self.channel in member.guild.channels and self.toggleLogs:
-                await self.channel.send('{0} - has left the server'.format(member))
+                await self.channel.send('>>> @{0} - has left the server'.format(member))
             self.totalLeftCount += 1
             self.dailyLeftCount += 1
             self.totalLogs += 1
@@ -165,10 +201,8 @@ class WelcomeCog(commands.Cog):
     @commands.Cog.listener()
     async def on_member_ban(self, guild: discord.Guild, member: discord.Member) -> None:
         try:
-            if not self.channel in member.guild.channels:
-                print('{0} - has been banned from the server'.format(member))
-                return
-            await self.channel.send('{0} - has been banned from the server'.format(member))
+            if self.channel in member.guild.channels and self.toggleLogs:
+                await self.channel.send('>>> @{0} - has been banned from the server'.format(member))
             self.totalLogs += 1
         except (discord.NotFound, discord.Forbidden):
             print(
@@ -177,10 +211,8 @@ class WelcomeCog(commands.Cog):
     @commands.Cog.listener()
     async def on_member_ban(self, guild: discord.Guild, member: discord.Member) -> None:
         try:
-            if not self.channel in member.guild.channels:
-                print('{0} - has been unbanned from the server'.format(member))
-                return
-            await self.channel.send('{0} - has been unbanned from the server'.format(member))
+            if self.channel in member.guild.channels and self.toggleLogs:
+                await self.channel.send('>>> @{0} - has been unbanned from the server'.format(member))
             self.totalLogs += 1
         except (discord.NotFound, discord.Forbidden):
             print(
