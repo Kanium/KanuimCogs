@@ -84,20 +84,20 @@ class TrafficCog(commands.Cog):
                 return
             self.__checkClock()
             if self.channel in member.guild.channels and self.toggleLogs:
-                await self.channel.send('>>> {0} has joined the server'.format(member.mention))
+                await self.channel.send('{0} has joined the server'.format(member.name))
             self.totalJoinedCount += 1
             self.dailyJoinedCount += 1
             self.totalLogs += 1
         except (discord.NotFound, discord.Forbidden):
             print(
-                f'Error Occured! sending a dm to {member.display_name} didnt work !')
+                f'Error Occured!')
 
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member) -> None:
         try:
             self.__checkClock()
             if self.channel in member.guild.channels and self.toggleLogs:
-                await self.channel.send('>>> {0} has left the server'.format(member.mention))
+                await self.channel.send('{0} has left the server'.format(member.name))
             self.totalLeftCount += 1
             self.dailyLeftCount += 1
             self.totalLogs += 1
@@ -110,20 +110,9 @@ class TrafficCog(commands.Cog):
         try:
             self.__checkClock()
             if self.channel in member.guild.channels and self.toggleLogs:
-                await self.channel.send('>>> {0} has been banned from the server'.format(member.mention))
+                await self.channel.send('{0} has been banned from the server'.format(member.name))
             self.totalLeftCount += 1
             self.dailyLeftCount += 1
-            self.totalLogs += 1
-        except (discord.NotFound, discord.Forbidden):
-            print(
-                f'Error Occured!')
-
-    @commands.Cog.listener()
-    async def on_member_ban(self, guild: discord.Guild, member: discord.Member) -> None:
-        try:
-            self.__checkClock()
-            if self.channel in member.guild.channels and self.toggleLogs:
-                await self.channel.send('>>> {0} has been unbanned from the server'.format(member.mention))
             self.totalLogs += 1
         except (discord.NotFound, discord.Forbidden):
             print(
