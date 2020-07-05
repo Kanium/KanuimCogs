@@ -32,7 +32,8 @@ class EventsCog(commands.Cog):
 
     @commands.command()
     async def seteventchannel(self): #admin only
-
+		pass
+		
     @commands.Cog.listener()
     async def on_reaction_remove(self,reaction, user) -> None:
         #substitute user for the actuall user id. 
