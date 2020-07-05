@@ -1,0 +1,13 @@
+{
+    "author": [
+        "Deathblade"
+    ],
+    "install_msg": "May Kanium broaden your horizons",
+    "name": "EventsCog",
+    "short": "Allows of event creation",
+    "description": "Allows for event creation",
+    "requirements": ["datetime"],
+    "tags": [
+        "Events"
+    ]
+}
